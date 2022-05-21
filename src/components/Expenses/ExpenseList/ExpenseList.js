@@ -28,7 +28,7 @@ const ExpenseList = (props) => {
    
     return (
         <Card className='expenses'>
-            <ExpenseChart items={filteredExpenseList}/>
+            <ExpenseChart items={filteredExpenseList} entireList={props.expenseList}/>
             <ExpensesFilter selected={filteredYear} onYearSelected={getFilteredData} />
             {showExpenses}
 

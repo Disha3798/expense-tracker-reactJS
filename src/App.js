@@ -2,6 +2,7 @@ import { useState } from 'react';
 import ExpenseList from './components/Expenses/ExpenseList/ExpenseList'
 import NewExpense from './components/Expenses/NewExpense/NewExpense';
 
+
 const INITIAL_EXPENSES=[
   {
     id: 'e1',
@@ -29,6 +30,8 @@ const INITIAL_EXPENSES=[
   },
 ]
 
+
+
 const App = () => {
 
   const [expenses,setExpenses]=useState(INITIAL_EXPENSES)
@@ -39,6 +42,7 @@ const App = () => {
 
   return (
     <div>
+     
       <NewExpense onSaveNewExpense={getNewExpense} />
       <ExpenseList expenseList={expenses} />
     </div>

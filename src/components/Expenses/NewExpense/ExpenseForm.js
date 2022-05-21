@@ -22,7 +22,8 @@ const ExpenseForm = (props) => {
         const newExpense = {
             title: title,
             amount: amount,
-            date: new Date(date)
+            date: new Date(date),
+            id:Math.random().toString()
         }
         props.onNewExpense(newExpense)
         props.updateDisplay()
