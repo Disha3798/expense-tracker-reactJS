@@ -2,8 +2,7 @@ import ReactECharts from 'echarts-for-react';
 
 const PieChart = (props) => {
 
-    let updatedExpenses = new Set()
-    updatedExpenses = props.expenses.map((expense) => ({
+    let updatedExpenses = props.expenses.map((expense) => ({
         value: expense.amount,
         name: expense.date.getFullYear()
     }))
@@ -26,6 +25,7 @@ const PieChart = (props) => {
             expense.value+=expense.value1
         }
     }
+    
     let updatedArray=[]
     updatedArray.push(updatedExpenses[0])
     for(let j=1;j<updatedExpenses.length;j++)
@@ -75,8 +75,7 @@ const PieChart = (props) => {
 
 
     return (
-        <div >
-
+        <div>
             <ReactECharts option={options} />
         </div>
     )
