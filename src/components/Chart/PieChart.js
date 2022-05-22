@@ -7,13 +7,6 @@ const PieChart = (props) => {
         value: expense.amount,
         name: expense.date.getFullYear()
     }))
-    
-    let years=[]
-    for(let i=0; i < updatedExpenses.length; i++){
-        if(years.indexOf(updatedExpenses[i].name) === -1) {
-            years.push(updatedExpenses[i].name);
-        }
-    }
     for(let j=0;j<updatedExpenses.length;j++)
     {
         
@@ -49,7 +42,7 @@ const PieChart = (props) => {
     }
     const options = {
         title: {
-            text: 'Pie Chart',
+            text: 'Total Expense',
             subtext: 'Expense per year',
             left: 'center'
         },
@@ -62,11 +55,10 @@ const PieChart = (props) => {
             textStyle: {
                 color: '#fff'
             }
-
         },
         series: [
             {
-                name: 'Tota Expense',
+                name: 'Total Expense',
                 type: 'pie',
                 radius: '50%',
                 data: updatedArray,

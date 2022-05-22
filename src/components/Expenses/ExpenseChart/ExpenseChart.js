@@ -1,11 +1,12 @@
 import { useState } from 'react';
+import './ExpenseChart.css'
 import Chart from '../../Chart/Chart'
 import PieChart from '../../Chart/PieChart';
 
 const ExpenseChart = (props) => {
 
     const [showPie, setShowPie] = useState(false)
-    const [buttonText, setButtonText] = useState('Show Pie Chart')
+    const [buttonText, setButtonText] = useState('Show Total Expense')
     const datapoints = [
         { month: 'Jan', value: 0 },
         { month: 'Feb', value: 0 },
@@ -27,19 +28,19 @@ const ExpenseChart = (props) => {
     }
 
     const showPieDisplay = () => {
-        if (buttonText === 'Show Pie Chart') {
+        if (buttonText === 'Show Total Expense') {
             setShowPie(true)
-            setButtonText('Hide Pie Chart')
+            setButtonText('Hide Total Expense')
         }
         else {
             setShowPie(false)
-            setButtonText('Show Pie Chart')
+            setButtonText('Show Total Expense')
         }
 
     }
     return (
         <div>
-            <button type="button" onClick={showPieDisplay}>{buttonText}</button>
+            <button className='pie-button' type="button" onClick={showPieDisplay}>{buttonText}</button>
             {showPie && <PieChart expenses={props.entireList}/>}
             {!showPie&&<Chart datapoints={datapoints} />}
         </div>
