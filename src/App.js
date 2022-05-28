@@ -1,9 +1,13 @@
 import { useState } from 'react';
 import ExpenseList from './components/Expenses/ExpenseList/ExpenseList'
 import NewExpense from './components/Expenses/NewExpense/NewExpense';
+import Login from './components/Login/LoginForm';
+import NavBar from './components/NavBar/NavBar';
+import MainHeader from './components/MainHeader/MainHeader';
+import { Fragment } from 'react';
 
 
-const INITIAL_EXPENSES=[
+const INITIAL_EXPENSES = [
   {
     id: 'e1',
     title: 'Toilet Paper',
@@ -30,22 +34,34 @@ const INITIAL_EXPENSES=[
   },
 ]
 
-
-
 const App = () => {
 
-  const [expenses,setExpenses]=useState(INITIAL_EXPENSES)
+  const [expenses, setExpenses] = useState(INITIAL_EXPENSES)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  const handleLogin = () => {
+    setIsLoggedIn(true)
+  }
+
+  const handleLogout = () => {
+    setIsLoggedIn(false)
+  }
 
   const getNewExpense = (expense) => {
-    setExpenses((prevData)=> [expense,...prevData])
+    setExpenses((prevData) => [expense, ...prevData])
   }
 
   return (
-    <div>
-     
-      <NewExpense onSaveNewExpense={getNewExpense} />
-      <ExpenseList expenseList={expenses} />
-    </div>
+    <Fragment>
+      {!isLoggedIn && <Login onLogin={handleLogin} />}
+      {isLoggedIn &&
+        (<MainHeader>
+          <NavBar onLogout={handleLogout} />
+          <NewExpense onSaveNewExpense={getNewExpense} />
+          <ExpenseList expenseList={expenses} />
+        </MainHeader>)
+      }
+    </Fragment>
   );
 }
 

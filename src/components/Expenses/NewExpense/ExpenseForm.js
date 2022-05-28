@@ -11,20 +11,24 @@ const ExpenseForm = (props) => {
     const titleHandler = (event) => {
         setTitle(event.target.value)
     }
+
     const amountHandler = (event) => {
         setAmount(event.target.value)
     }
+
     const dateHandler = (event) => {
         setDate(event.target.value)
     }
+    
     const submitHandler = (event) => {
         event.preventDefault();
         const newExpense = {
             title: title,
             amount: amount,
             date: new Date(date),
-            id:Math.random().toString()
+            id: Math.random().toString()
         }
+
         props.onNewExpense(newExpense)
         props.updateDisplay()
         setTitle('')
