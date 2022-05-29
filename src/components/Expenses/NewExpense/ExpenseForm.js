@@ -2,6 +2,7 @@ import React from 'react';
 import { useContext } from 'react';
 import { useReducer, useEffect} from 'react';
 import ExpenseContext from '../../../store/expense-context';
+import Button from '../../UI/Button/Button';
 
 import './ExpenseForm.css';
 
@@ -110,8 +111,8 @@ const ExpenseForm = (props) => {
                 </div>
             </div>
             <div className='new-expense__actions'>
-                <button type='button' onClick={goBack}>Cancel</button>
-                <button type='submit' >Add Expense</button>
+                <Button type='button' onClick={goBack}>Cancel</Button>
+                <Button type='submit'>Add Expense</Button>
             </div>
         </form>
     );

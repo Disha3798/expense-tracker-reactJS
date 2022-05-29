@@ -1,11 +1,4 @@
 .pie-button{
-    font: inherit;
-    cursor: pointer;
-    height: 40px;
-    /* padding: 1rem 2rem; */
-    border: 1px solid #40005d;
-    background-color: #40005d;
-    color: white;
-    border-radius: 12px;
-    margin-right: 1rem;
+    padding: 0.25rem 0.25rem !important;
+    font-size: 1rem !important;
 }

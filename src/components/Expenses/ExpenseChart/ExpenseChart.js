@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './ExpenseChart.css'
 import Chart from '../../Chart/Chart'
 import PieChart from '../../Chart/PieChart';
+import Button from '../../UI/Button/Button';
 
 const ExpenseChart = (props) => {
 
@@ -40,7 +41,7 @@ const ExpenseChart = (props) => {
     }
     return (
         <div>
-            <button className='pie-button' type="button" onClick={showPieDisplay}>{buttonText}</button>
+            <Button className='pie-button' type="button" onClick={showPieDisplay}>{buttonText}</Button>
             {showPie && <PieChart />}
             {!showPie&&<Chart datapoints={datapoints} />}
         </div>

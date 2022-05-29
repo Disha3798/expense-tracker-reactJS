@@ -2,6 +2,7 @@ import classes from './ErrorModal.module.css'
 import Card from '../Card/Card'
 import React from 'react'
 import ReactDOM from 'react-dom';
+import Button from '../Button/Button';
 
 const ErrorModal = (props) => {
 
@@ -21,7 +22,7 @@ const ErrorModal = (props) => {
                     <p>{props.message}</p>
                 </div>
                 <footer className={classes.actions}>
-                    <button className={classes.button} onClick={props.onConfirm}>Okay</button>
+                    <Button onClick={props.onConfirm}>Okay</Button>
                 </footer>
             </Card>
         )

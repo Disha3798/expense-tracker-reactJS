@@ -1,5 +1,6 @@
 import { Fragment,useState,useEffect,useContext } from 'react';
 import AuthContext from '../../store/auth-context';
+import Button from '../UI/Button/Button';
 import Card from '../UI/Card/Card'
 import ErrorModal from '../UI/ErrorModal/ErrorModal';
 import classes from './Login.module.css'
@@ -91,10 +92,9 @@ const Login = () => {
                         />
                     </div>
                     <div className={classes.actions}>
-                        <button type="submit" className={classes.button}
-                        >
+                        <Button type="submit" >
                             Login
-                        </button>
+                        </Button>
                     </div>
                 </form>
             </Card>

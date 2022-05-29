@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import AuthContext from '../../store/auth-context';
+import Button from '../UI/Button/Button';
 
 import classes from './NavBar.module.css';
 
@@ -14,7 +15,7 @@ const NavBar = () => {
         <nav className={classes.nav}>
             <ul>
                 <li>
-                    <button onClick={logout}>Logout</button>
+                    <Button onClick={logout}>Logout</Button>
                 </li>
             </ul>
         </nav>

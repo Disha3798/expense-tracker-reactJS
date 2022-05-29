@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import Button from '../../UI/Button/Button';
 
 import ExpenseForm from './ExpenseForm';
 import './NewExpense.css';
@@ -20,7 +21,7 @@ const NewExpense = (props) => {
 
     return (
         <div className='new-expense'>
-            {!showForm&&<button type="button" onClick={showExpenseForm}>Add Expenses</button>}
+            {!showForm&&<Button type="button" onClick={showExpenseForm}>Add Expenses</Button>}
             {showForm&&<ExpenseForm onNewExpense={getNewExpense} updateDisplay={hideExpenseForm}/>}
         </div>
     );
