@@ -1,5 +1,7 @@
 import React from 'react';
+import { useContext } from 'react';
 import { useReducer, useEffect} from 'react';
+import ExpenseContext from '../../../store/expense-context';
 
 import './ExpenseForm.css';
 
@@ -25,6 +27,8 @@ const inputReducer=(state,action)=>{
 }
 
 const ExpenseForm = (props) => {
+
+    const expenseCtx=useContext(ExpenseContext)
 
     const [titleState,dispatchTitle]=useReducer(inputReducer,{
         value:'',
@@ -67,12 +71,11 @@ const ExpenseForm = (props) => {
             id: Math.random().toString()
         }
 
-        props.onNewExpense(newExpense)
+        expenseCtx.addNewExpense(newExpense)
         props.updateDisplay()
-        dispatchTitle({type:'USER_INPUT',val:''})
-        dispatchAmount({type:'USER_INPUT',val:''})
-        dispatchDate({type:'USER_INPUT',val:''})
-     
+        dispatchTitle({type:'INITIAL_STATE',val:''})
+        dispatchAmount({type:'INITIAL_STATE',val:''})
+        dispatchDate({type:'INITIAL_STATE',val:''})
     }
 
     const goBack = () => {

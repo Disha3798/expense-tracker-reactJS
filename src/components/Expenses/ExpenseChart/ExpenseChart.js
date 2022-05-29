@@ -41,7 +41,7 @@ const ExpenseChart = (props) => {
     return (
         <div>
             <button className='pie-button' type="button" onClick={showPieDisplay}>{buttonText}</button>
-            {showPie && <PieChart expenses={props.entireList}/>}
+            {showPie && <PieChart />}
             {!showPie&&<Chart datapoints={datapoints} />}
         </div>
 

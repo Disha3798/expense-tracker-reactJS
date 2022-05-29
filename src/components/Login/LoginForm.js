@@ -1,10 +1,12 @@
-import { useEffect } from 'react';
-import { Fragment,useState } from 'react';
+import { Fragment,useState,useEffect,useContext } from 'react';
+import AuthContext from '../../store/auth-context';
 import Card from '../UI/Card/Card'
 import ErrorModal from '../UI/ErrorModal/ErrorModal';
 import classes from './Login.module.css'
 
-const Login = (props) => {
+const Login = () => {
+
+    const authCtx=useContext(AuthContext)
 
     const [enteredEmail, setEnteredEmail] = useState('');
     const [emailIsValid, setEmailIsValid] = useState(false);
@@ -36,7 +38,7 @@ const Login = (props) => {
 
         event.preventDefault()
         if ((enteredEmail && emailIsValid) && ( enteredPassword && passwordIsValid)) {
-            props.onLogin()
+            authCtx.onLogin(enteredEmail,enteredPassword)
         }
         else if(enteredPassword && enteredPassword.trim().length<=6)
         {

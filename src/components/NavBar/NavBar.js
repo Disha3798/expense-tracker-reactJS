@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import AuthContext from '../../store/auth-context';
 
 import classes from './NavBar.module.css';
 
-const NavBar = (props) => {
+const NavBar = () => {
+    const authCtx = useContext(AuthContext)
 
     const logout = () => {
-        props.onLogout()
+        authCtx.onLogout()
     }
 
     return (

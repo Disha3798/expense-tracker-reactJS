@@ -1,8 +1,12 @@
 import ReactECharts from 'echarts-for-react';
+import { useContext } from 'react';
+import ExpenseContext from '../../store/expense-context';
 
-const PieChart = (props) => {
+const PieChart = () => {
 
-    let updatedExpenses = props.expenses.map((expense) => ({
+    const expenseCtx=useContext(ExpenseContext)
+
+    let updatedExpenses = expenseCtx.expenses.map((expense) => ({
         value: expense.amount,
         name: expense.date.getFullYear()
     }))
