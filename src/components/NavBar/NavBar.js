@@ -15,7 +15,7 @@ const NavBar = () => {
         <nav className={classes.nav}>
             <ul>
                 <li>
-                    <Button onClick={logout}>Logout</Button>
+                    <div className={classes.logoutHandle} onClick={logout}>Logout</div>
                 </li>
             </ul>
         </nav>
