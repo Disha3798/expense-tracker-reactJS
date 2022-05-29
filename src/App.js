@@ -37,7 +37,7 @@ const INITIAL_EXPENSES = [
 const App = () => {
 
   const [expenses, setExpenses] = useState(INITIAL_EXPENSES)
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
 
   const handleLogin = () => {
     setIsLoggedIn(true)

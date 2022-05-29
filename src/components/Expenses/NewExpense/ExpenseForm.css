@@ -23,9 +23,8 @@
 
   .new-expense__control_error input
   {
-    border-radius: 6px;
-    border: 1px solid red;
-    background-color: rgb(240, 107, 107);
+    border-color: red;
+    background: #fbdada;
   }
 
   

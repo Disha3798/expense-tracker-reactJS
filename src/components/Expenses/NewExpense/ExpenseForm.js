@@ -1,39 +1,78 @@
 import React from 'react';
-import { useState } from 'react';
+import { useReducer, useEffect} from 'react';
 
 import './ExpenseForm.css';
 
+const inputReducer=(state,action)=>{
+    if(action.type==='USER_INPUT')
+    {
+        return({
+            value:action.val,
+            isValid:action.val.length>0
+        })
+    }
+    if(action.type==='INITIAL_STATE')
+    {
+        return({
+            value:action.val,
+            isValid:true
+        })
+    }
+    return ({
+        value:'',
+        isValid:false
+    })
+}
+
 const ExpenseForm = (props) => {
-    const [title, setTitle] = useState('')
-    const [amount, setAmount] = useState('')
-    const [date, setDate] = useState('')
+
+    const [titleState,dispatchTitle]=useReducer(inputReducer,{
+        value:'',
+        isValid:false
+    })
+    const [amountState,dispatchAmount]=useReducer(inputReducer,{
+        value:'',
+        isValid:false
+    })
+    const [dateState,dispatchDate]=useReducer(inputReducer,{
+        value:'',
+        isValid:false
+    })
+    
+    useEffect(()=>{
+        //use this to display normal border color to inputs for first time component loads
+        dispatchTitle({type:'INITIAL_STATE',val:''})
+        dispatchAmount({type:'INITIAL_STATE',val:''})
+        dispatchDate({type:'INITIAL_STATE',val:''})
+    },[])
 
     const titleHandler = (event) => {
-        setTitle(event.target.value)
+        dispatchTitle({type:'USER_INPUT',val:event.target.value})
     }
 
     const amountHandler = (event) => {
-        setAmount(event.target.value)
+        dispatchAmount({type:'USER_INPUT',val:event.target.value})
     }
 
     const dateHandler = (event) => {
-        setDate(event.target.value)
+        dispatchDate({type:'USER_INPUT',val:event.target.value})
     }
-    
+
     const submitHandler = (event) => {
         event.preventDefault();
         const newExpense = {
-            title: title,
-            amount: amount,
-            date: new Date(date),
+            title: titleState.value,
+            amount: amountState.value,
+            date: new Date(dateState.value),
             id: Math.random().toString()
         }
 
         props.onNewExpense(newExpense)
         props.updateDisplay()
-        setTitle('')
-        setAmount('')
-        setDate('')
+        dispatchTitle({type:'USER_INPUT',val:''})
+        dispatchAmount({type:'USER_INPUT',val:''})
+        dispatchDate({type:'USER_INPUT',val:''})
+     
     }
 
     const goBack = () => {
@@ -43,24 +82,25 @@ const ExpenseForm = (props) => {
     return (
         <form onSubmit={submitHandler}>
             <div className='new-expense__controls'>
-                <div className='new-expense__control'>
+                <div 
+                className={`new-expense__control ${!titleState.isValid?'new-expense__control_error':''}`}>
                     <label>Title</label>
                     <input type='text'
-                        value={title}
+                        value={titleState.value}
                         onChange={titleHandler} required />
                 </div>
-                <div className='new-expense__control'>
+                <div className={`new-expense__control ${!amountState.isValid?'new-expense__control_error':''}`}>
                     <label>Amount</label>
                     <input type='number'
-                        value={amount}
+                        value={amountState.value}
                         min='0.01'
                         step='0.01'
                         onChange={amountHandler} required />
                 </div>
-                <div className='new-expense__control'>
+                <div className={`new-expense__control ${!dateState.isValid?'new-expense__control_error':''}`}>
                     <label>Date</label>
                     <input type='date'
-                        value={date}
+                        value={dateState.value}
                         min='2019-01-01'
                         max='2022-12-31'
                         onChange={dateHandler} required />
